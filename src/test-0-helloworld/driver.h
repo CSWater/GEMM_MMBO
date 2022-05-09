@@ -8,7 +8,7 @@
 #include <cstring>
 #include "hip/hip_runtime.h"
 #include "hip/hip_runtime_api.h"
-#include "hip/hip_hcc.h"
+#include "hip/hip_ext.h"
 
 #define HIP_CHECK(status)                                                                          \
     if (status != hipSuccess) {                                                                    \
@@ -30,7 +30,7 @@ void launch(std::string path, std::string kernel_name, void* args, int argsize){
   hipFunction_t Function;
   HIP_CHECK(hipModuleLoad(&Module, path.c_str()));
   HIP_CHECK(hipModuleGetFunction(&Function, Module, kernel_name.c_str()));
-  HIP_CHECK(hipHccModuleLaunchKernel(Function, blknum*thdnum, 1, 1, thdnum, 1, 1, 0, 0, NULL, (void**)&config));
+  HIP_CHECK(hipExtModuleLaunchKernel(Function, blknum*thdnum, 1, 1, thdnum, 1, 1, 0, 0, NULL, (void**)&config));
 }
 
 

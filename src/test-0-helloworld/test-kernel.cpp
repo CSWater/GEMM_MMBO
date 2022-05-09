@@ -25,6 +25,7 @@ THE SOFTWARE.
 extern "C" __global__ void hello_world(float* a, float* b) {
     int tx = hipThreadIdx_x+hipBlockDim_x*hipBlockIdx_x;
     if(tx<64) b[tx] = a[tx];
+    printf("hello world\n");
 }
 
-int main(){}
+//int main(){}

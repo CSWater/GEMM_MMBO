@@ -30,7 +30,7 @@ int main(){
   args.Ad = Ad;
   args.Bd = Bd;
 
-  launch<1,64>("test-kernel.co", "hello_world", (void*)&args, sizeof(args));
+  launch<1,64>("test-kernel-gfx906.co", "hello_world", (void*)&args, sizeof(args));
   
   // validate 
   int errors = 0;
