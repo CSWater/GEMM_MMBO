@@ -18,7 +18,6 @@ all: test sta ato otco
 
 test: test.cc
 	$(HIPCC) $< -o $@
-	./clean.sh
 
 sta: 
 	$(HIPCC)  -c -S --cuda-device-only --offload-arch=$(DCU_ARCH) -o $(DCU_ASM) $(DCU_SRC)
